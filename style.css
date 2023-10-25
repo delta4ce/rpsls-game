@@ -29,4 +29,7 @@ button {
   font-weight: bold;
   font-size: 1.1rem;
   color: #f9fef1;
+} 
+button:hover {
+  background: #6616df;
 }
