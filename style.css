@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+  background: #111;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+  min-height: 80vh;
+}
+
+h1,
+h2 {
+  color: #9458ee;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+button {
+  padding: 30px;
+  background: #9458ee;
+  
+  border-radius: 22px;
+  border: 2px solid #250418;
+  
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #f9fef1;
+}
