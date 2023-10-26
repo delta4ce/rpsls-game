@@ -9,19 +9,21 @@
         // Spock vaporizes Rock
         // And, as it always has, Rock crushes Scissors
 const choices = ["Rock", "Paper", "Scissors", "Lizard", "Spock"]
+let roundString = '';
+let stringCh = 0;
 
 let playerScore = 0; //implement scoring system
 let compScore = 0;
 
-let btn1 = document.querySelector('.buttons button:nth-child(1)')
+const btn1 = document.querySelector('.buttons button:nth-child(1)')
 btn1.addEventListener('click', () => playRound(btn1.innerText))
-let btn2 = document.querySelector('.buttons button:nth-child(2)')
+const btn2 = document.querySelector('.buttons button:nth-child(2)')
 btn2.addEventListener('click', () => playRound(btn2.innerText))
-let btn3 = document.querySelector('.buttons button:nth-child(3)')
+const btn3 = document.querySelector('.buttons button:nth-child(3)')
 btn3.addEventListener('click', () => playRound(btn3.innerText))
-let btn4 = document.querySelector('.buttons button:nth-child(4)')
+const btn4 = document.querySelector('.buttons button:nth-child(4)')
 btn4.addEventListener('click', () => playRound(btn4.innerText))
-let btn5 = document.querySelector('.buttons button:nth-child(5)')
+const btn5 = document.querySelector('.buttons button:nth-child(5)')
 btn5.addEventListener('click', () => playRound(btn5.innerText))
 
 function getChoice(number) {
@@ -29,6 +31,8 @@ function getChoice(number) {
 }
 
 function playRound(playerChoice) {
+	stringCh = 0;
+	document.querySelector('h2').textContent = '';
 	const Rules = {
 	  Rock: ["Scissors", "Lizard"],
 	  Paper: ["Rock", "Spock"],
@@ -39,14 +43,15 @@ function playRound(playerChoice) {
 	const compChoice = getChoice(Math.floor(Math.random() * choices.length));
 
 	if (playerChoice === compChoice) {
-		alert("It's a tie!")
+		roundString = "It's a tie!";
 	} else if (Rules[playerChoice].includes(compChoice)) {
-		alert(`You win! - ${getString(playerChoice, compChoice)}`)
+		roundString = `You win! - ${getString(playerChoice, compChoice)}`;
 		playerScore++;
 	} else {
-		alert(`I win with a ${compChoice}! - ${getString(playerChoice, compChoice)}`)
+		roundString = `I win with a ${compChoice}! - ${getString(playerChoice, compChoice)}`;
 		compScore++;
 	}
+	typeString();
 }
 
 function getString(playerChoice, compChoice) {
@@ -68,4 +73,12 @@ function getString(playerChoice, compChoice) {
 			return string
 		}
 	}
+}
+
+function typeString() {
+  if (stringCh < roundString.length) {
+    document.querySelector('h2').textContent += roundString[stringCh];
+    stringCh++;
+    setTimeout(typeString, 50);
+  }
 }
